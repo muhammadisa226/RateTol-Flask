@@ -1,0 +1,63 @@
+{% extends 'layouts/main_layout.html' %} {%block content%}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/stylechatbot.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
+<div class="row">
+    <div class="col-md-10 mr-auto ml-auto mt-3">
+    <h1>Chatbot AI</h1>
+<form>
+    <div id="chatbox">
+        <div class="col-md-8 ml-auto mr-auto">
+            <p class="botText"><span>Hi! I'm Your bot.</span></p>
+        </div>
+    </div>
+    <div id="userInput" class="row">
+        <div class="col-md-10">
+            <input id="text" type="text" name="msg" placeholder="Message" class="form-control" autocomplete>
+            <button type="submit" id="send" class="btn btn-warning">Send</button>
+        </div>
+    </div>
+</form>
+</div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("form").on("submit", function(event) {
+            var rawText = $("#text").val();
+            var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+            $("#text").val("");
+            $("#chatbox").append(userHtml);
+            document.getElementById("userInput").scrollIntoView({
+                block: "start",
+                behavior: "smooth",
+            });
+            $.ajax({
+                data: {
+                    msg: rawText,
+                },
+                type: "GET",
+                url: "/getchatbot",
+            }).done(function(data) {
+                var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+                $("#chatbox").append($.parseHTML(botHtml));
+                document.getElementById("userInput").scrollIntoView({
+                    block: "start",
+                    behavior: "smooth",
+                });
+            });
+            event.preventDefault();
+        });
+    });
+</script>
+  {% endblock %}
+</div>

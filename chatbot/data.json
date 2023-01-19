@@ -1,0 +1,174 @@
+{"intents": [
+        {"tag": "ratetol",
+         "patterns": ["apa itu rate tol?", "ratetol", "Ratetol itu apa ?", "ratetol adalah"],
+         "responses": [
+                "Ratetol Merupakan Sistem Menentukan Tarif  Tol Berdasarkan Jenis Kendaraan"
+        ],
+         "context": [""]
+        },
+        {"tag": "fitur",
+         "patterns": ["ada fitur apa yang ada di aplikasi ini?", "fitur fitur di dalam aplikasi ini apa saja?", "fitur"],
+         "responses": [
+                "ada fitur tarif,chatbot,dan history"
+        ],
+         "context": [""]
+        },
+        {"tag": "greetings.1",
+         "patterns": ["hai"],
+         "responses": [
+                "hai, ada yang bisa saya bantu"
+        ],
+         "context": [""]
+        },
+        {"tag": "greetings.2",
+         "patterns": ["halo"],
+         "responses": [
+                "Halo juga, ada yang bisa saya bantu ?"
+        ],
+        "context": [""]
+        },
+        {"tag": "greetings.3",
+         "patterns": ["hei"],
+         "responses": [
+                "Hei,apakah ada masalah ?"
+        ],
+         "context": [""]
+        },
+        {"tag": "greetings.4",
+         "patterns": ["assalamu'alaikum"],
+         "responses": [
+                "walaikumsalam"
+        ],
+         "context": [""]
+        },
+        {"tag": "greetings.morning.1",
+         "patterns": ["pagi"],
+         "responses": ["Pagi juga"],
+         "context": [""]
+        },
+        {"tag": "greetings.morning.2",
+         "patterns": ["selamat pagi"],
+         "responses": ["Selamat Pagi juga"],
+         "context": [""]
+        }, 
+        {"tag": "greetings.afternoon.1",
+        "patterns": ["siang"],
+        "responses": ["Siang juga"],
+        "context": [""]
+        },
+        {"tag": "greetings.afternoon.2",
+         "patterns": ["selamat siang"],
+         "responses": ["Selamat Siang juga"],
+         "context": [""]
+        }, 
+        {"tag": "greetings.night.1",
+         "patterns": ["malam"],
+         "responses": ["malam juga"],
+         "context": [""]
+        },
+        {"tag": "greetings.night.2",
+         "patterns": ["selamat malam"],
+         "responses": ["Selamat Malam juga"],
+         "context": [""]
+        },
+        {"tag": "golongan.1",
+         "patterns": ["kendaraan saya pick up, termasuk golongan berapa?"],
+         "responses": [
+                "untuk kendaraan pick up, golongan satu"
+        ],
+         "context": [""]
+        },
+        {"tag": "golongan.2",
+         "patterns": ["truk golongan berapa ya"],
+         "responses": [
+                "golongan tiga"
+        ],
+         "context": [""]
+        },
+        {"tag": "golongan.3",
+         "patterns": ["apakah avanza termasuk golongan satu?"],
+         "responses": [
+                "ya, untuk kendaraan tersebut gologan satu"
+        ],
+         "context": [""]
+        },
+        {"tag": "panggilan.1",
+         "patterns": ["informasi jalan tol bisa kemana?"],
+         "responses": [
+                "silakan bisa hubungi di call center kami di 14080"
+        ],
+         "context": [""]
+        },
+        {"tag": "greetings.1",
+         "patterns": ["hai"],
+         "responses": [
+                "hai, ada yang bisa saya bantu"
+        ],
+         "context": [""]
+        },
+        {"tag": "goodbye.1",
+         "patterns": ["Bye"],
+         "responses": ["Bye, Senang berbincang dengan anda...."],
+         "context": [""]
+        },
+        {"tag": "goodbye.2",
+         "patterns": ["Sampai Jumpa"],
+         "responses": ["Sampai jumpa lagi"],
+         "context": [""]
+        },
+        {"tag": "goodbye.3",
+         "patterns": ["selamat tinggal"],
+         "responses": ["Selamat Tinggal juga"],
+         "context": [""]
+        },
+        {
+         "tag": "terima kasih.1",
+         "patterns": ["Terima kasih"],
+         "responses": ["Sama-Sama"],
+         "context": [""]
+        },
+	    {
+         "tag": "terima kasih.2",
+         "patterns": ["Terima kasih telah membantu saya"],
+         "responses": ["Dengan senang hati"],
+         "context": [""]
+        },
+	    {
+         "tag": "terima kasih.3",
+         "patterns": ["Terima Kasih Banyak"],
+         "responses": ["Sama-Sama, ini Sudah menjadi tugas saya"],
+         "context": [""]
+        },
+        {"tag": "noanswer",
+         "patterns": [""],
+         "responses": ["Maaf, saya tidak mengerti yang anda maksud", "Mohon Maaf Saya Tidak Mengerti"],
+         "context": [""]
+        },
+        { "tag": "masalah.1",
+          "patterns": ["ada masalah dengan kendaraan saya"],
+          "responses": ["Masalah yang seperti apa ?"],
+           "context": [""]
+        },
+        { "tag": "masalah.2",
+          "patterns": ["mohon bantuannya kendaraan saya pecah ban"],
+          "responses": ["Posisi anda berada dimana ?"],
+          "context": [""]
+        },
+        { "tag": "masalah.3",
+                "patterns": ["terjadi kecelakaan di kilometer 172 arah Bandung"],
+                "responses": ["Baik kami kirimkan petugas"],
+                 "context": [""]
+        },
+        { "tag": "masalah.4",
+          "patterns": ["kami kehabisan bensin"],
+          "responses": ["Tol mana ?"],
+          "context": [""]
+        },
+	{ "tag": "masalah.5",
+          "patterns": ["mobil saya mengalami kerusakan"],
+          "responses": ["Kerusakan bagian mana ? "],
+           "context": [""]
+          }
+       ]
+}
+

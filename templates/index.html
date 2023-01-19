@@ -1,0 +1,126 @@
+{% extends 'layouts/main_layout.html' %} {% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/style.css') }}"
+/>
+<!--  -->
+
+<!-- jumbotron  -->
+<section class="jumbotron text-center bg-light">
+  <h1 class="display-4">Rate Tol</h1>
+  <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" width="200" class="">
+  <p class="lead mt-3">
+   Ratetol Merupakan Sistem Menentukan Tarif  Tol Berdasarkan Jenis Kendaraan
+  </p>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f3f4f5" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,170.7C384,181,480,171,576,144C672,117,768,75,864,48C960,21,1056,11,1152,21.3C1248,32,1344,64,1392,80L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+</section>
+<!-- end jumbotron -->
+
+<!-- main section -->
+<section class="main">
+  <div class="container" id="cUpload">
+    <div class="row text-center">
+      <div class="col">
+        <h2 class="mb-3">Menentukan Tarif Tol Berdasarkan Jenis Kendaraan</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div id="selectedBanner" class="text-center mb-3"></div>
+        <div class="form-group">
+          <input type="file" class="form-control" name="image" id="img"  />
+          <label for="tujuans" class="mb-2 mt-3">Tujuan Tol: </label>
+          <select id="tujuans" name="tujuans" class="form-select selectpicker">
+            <option value="Semarang">Semarang</option>
+            <option value="Solo">Solo</option>
+            <option value="Brebes Timur">Brebes Timur</option>
+            <option value="Brebes Barat" name="tujuan">Brebes Barat</option>
+          </select>
+          <button
+          type="button"
+          class="btn btn-primary mr-3 mb-2 mt-3"
+          id="upload"
+        >
+          Go
+        </button>
+        <div class="spinner-border" id="spinner" role="status">
+          <span class="sr-only"></span>
+        </div>
+        </div>
+        </div>
+       </div>
+
+</section>
+<!-- end main -->
+<!-- RESULT SECTION -->
+<section class="container result mt-3 mb-2 text-center">
+  <h2>Hasil :</h2>
+  <p id="jk">Jenis Kendaraan :</p>
+  <p id="tarif">Tarif :</p>
+  <p id="tujuan">Tujuan :</p>
+</section>
+<!-- END RESULT -->
+  <script>
+    var selDiv = "";
+    var storedFiles = [];
+    $(document).ready(function () {
+      $("#spinner").hide();
+      $("#img").on("change", handleFileSelect);
+      selDiv = $("#selectedBanner");
+
+      $("#upload").click(function () {
+        var form_data = new FormData();
+        var ins = document.getElementById("img").files.length;
+
+        for (var x = 0; x < ins; x++) {
+          form_data.append("image", document.getElementById("img").files[x]);
+        }
+        form_data.append("tujuan", $("#tujuans").val());
+        $("#spinner").show();
+        $.ajax({
+          url: "http://192.168.163.50:5000/image/upload",
+          dataType: "json",
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: form_data,
+          type: "POST",
+          success: function (response) {
+            $("#spinner").hide();
+            jk = response["message"]["jenis_kendaraan"];
+            tarif = response["message"]["tarif"];
+            tujuan = response["message"]["tujuan"];
+            $("#jk").append(" " + jk + "");
+            $("#tarif").append(" " + tarif + "");
+            $("#tujuan").append(" " + tujuan + "");
+          },
+        });
+      });
+    });
+
+    function handleFileSelect(e) {
+      var files = e.target.files;
+      var filesArr = Array.prototype.slice.call(files);
+      filesArr.forEach(function (f) {
+        if (!f.type.match("image.*")) {
+          return;
+        }
+        storedFiles.push(f);
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          var html =
+            '<img src="' +
+            e.target.result +
+            "\" data-file='" +
+            f.name +
+            "alt='Image' height='200px' width='200px'>";
+          selDiv.html(html);
+        };
+        reader.readAsDataURL(f);
+      });
+    }
+  </script>
+  {% endblock %}
+</div>

@@ -1,0 +1,47 @@
+{% extends 'layouts/main_layout.html' %} {% block content %}
+<div class="container mt-3">
+  <h2>History</h2>
+
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Created At</th>
+        <th>Tujuan</th>
+      </tr>
+    </thead>
+    <tbody id="tdata"></tbody>
+  </table>
+</div>
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: "http://192.168.163.50:5000/image/all",
+      success: function (data) {
+        data.forEach(function (data) {
+          $("#tdata").append(
+            "<tr>" +
+              "<td>" +
+              data.id +
+              "</td>" +
+              "<td>" +
+              data.name +
+              "</td>" +
+              "<td>" +
+              data.created_at +
+              "</td>" +
+              "<td>" +
+              data.tujuan +
+              "</td>" +
+              "</tr"
+          );
+        });
+      },
+    });
+  });
+</script>
+
+{% endblock %}
